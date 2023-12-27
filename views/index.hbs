@@ -1,0 +1,20 @@
+<div class="row ">
+  <div class="col-12 bg-primary banner">
+      <div class="container">
+      歡迎使用kspsss.shorter
+      </div>
+  </div>
+</div>
+<div class="container mt-2">
+  <div class="mb-2">
+    短網址服務，請輸入你要縮短的網址
+  </div>
+  <form class="d-flex" method="POST" action ="/shortUrl" >
+    <div class="mb-4">
+    <input type="url" name="inputURL" value="{{originUrl}}" class="form-control" placeholder="在這裡輸入你的網址" required="required" >
+    </div>
+    <button class="btn btn-success mb-4" type="submit">
+      輸出網址
+    </button>
+  </form>
+</div> 

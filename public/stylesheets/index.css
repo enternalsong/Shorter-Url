@@ -1,0 +1,11 @@
+
+.banner {
+    font-size:25px;
+    text-align: center;
+    height:75px;
+    width: 100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+}
