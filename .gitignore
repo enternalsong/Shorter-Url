@@ -1,2 +1,5 @@
+# my environment processing
+.env
+#ignore node_modules
 
 node_modules
