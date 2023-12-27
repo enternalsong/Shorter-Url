@@ -5,7 +5,7 @@ const mongoose = require('mongoose')
 //   require('dotenv').config()
 // }
 
-let mongoDB = "mongodb://localhost:27017/try_test";
+
 
 // mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true }) // 設定連線到 mongoDB
 
