@@ -3,7 +3,9 @@ const mongoose = require('mongoose')
 const Url = require('./models/schema');
 const { engine } = require('express-handlebars');
 const UrlShroter = require('./public/javascript/randomURL');
+
 require('./config/mongoose');
+
 //require('./models/seeds/urlSeeder')
 console.log(UrlShroter );
 const app = express();
@@ -39,8 +41,10 @@ app.post('/shortUrl',(req,res)=>{
                 Url.find().lean().then(urls=>{
                  const IsUrlRepeat = UrlShroter.checkUrlRepeat(urls,originalUrl)
                  if(IsUrlRepeat[0]){
-                    shortUrl = IsUrlRepeat[0];
+                    shortUrl = IsUrlRepeat[1];
+                    console.log(shortUrl);
                     console.log(`it is exisint in database`);
+                    res.render('index', { url_msg: shortUrl});
                  }
                 else{
                     console.log('db no exisiting');
@@ -52,6 +56,7 @@ app.post('/shortUrl',(req,res)=>{
                     })
                     newUrl.save().then(()=>{
                     console.log("successful!!!")
+                    res.render('index', { url_msg: shortUrl});             
                     }).catch((err)=>{
                         console.log(err);
                     }).finally(()=>{
@@ -67,7 +72,9 @@ app.post('/shortUrl',(req,res)=>{
                 // console.log(saveLink);
             }
             else{
-                console.log(`this url is not exist`)
+                console.log(`this url is not exist`);
+                error_msg = `this url is not exist`;
+                res.json({error_msg});
             }
           })
           .catch(error => {
@@ -79,7 +86,6 @@ app.post('/shortUrl',(req,res)=>{
 });
 app.get('/:shortLink',(req,res)=>{
     //local 端
-
     // const shortLink = req.params.shortLink;
     // const originalLink = saveLink[shortLink];
     // if(originalLink){
@@ -102,5 +108,4 @@ app.get('/:shortLink',(req,res)=>{
             res.status(404).send('NotFound');
         }
     })
-
 })

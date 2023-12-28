@@ -1,20 +1,34 @@
-<div class="row ">
-  <div class="col-12 bg-primary banner">
+<div class="row">
+  <div class="col-12  banner">
       <div class="container">
-      歡迎使用kspsss.shorter
+        <div class="text mb-2">
+          <img src="/images/chain.svg" width="60" height="60" class="d-inline-block align-top" alt="SVG Image">
+          Shorting Your URL ?
+          </div>
+      <div class="col-12 w-100 mb-2">
+        <form id="urlForm" class="d-flex justify-content-center" method="POST" action="/shortUrl">
+        <div class="short-input mb-4">
+        <input id="inputUrl" type="url" name="inputURL" value="{{originUrl}}" class="form-control" placeholder="Input the webiste URL" required="required" >
+        </div>
+        <button class="btn btn-success mb-4" type="submit">
+          Click me
+        </button>
+        </form>
+      </div>
+      <div class="text-2 secondary">after click the button, we will give you a shorter link, let you acess the website by your shorter link </div>
       </div>
   </div>
 </div>
-<div class="container mt-2">
-  <div class="mb-2">
-    短網址服務，請輸入你要縮短的網址
-  </div>
-  <form class="d-flex" method="POST" action ="/shortUrl" >
-    <div class="mb-4">
-    <input type="url" name="inputURL" value="{{originUrl}}" class="form-control" placeholder="在這裡輸入你的網址" required="required" >
-    </div>
-    <button class="btn btn-success mb-4" type="submit">
-      輸出網址
-    </button>
-  </form>
+
 </div> 
+{{#if url_msg}}
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+        <div id="shortUrlResult">
+          {{url_msg}}
+        </div>
+    </div>
+  </div>
+</div>
+{{/if}}

@@ -14,7 +14,7 @@ const ShorterUrl = {
     // check url existing
     const urlIndex = list.findIndex(item => item.LongUrl === url)
     // existing 
-    if (urlIndex !== -1) return [true, list[urlIndex].shortUrl];
+    if (urlIndex !== -1) return [true, list[urlIndex].ShortUrl];
     // no existing 
     console.log('there is no existing');
     return [false, '']
